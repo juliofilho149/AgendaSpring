@@ -17,7 +17,6 @@ public class AgendamentoController {
         this.service = service;
     }
 
-    //Post para inserir informações no banco de dados, não criei agendamento.setId() pois essa coluna é AUTOINCREMENT
     @PostMapping
     public Agendamento novoAgendamento(@RequestBody AgendamentoRequest request){
         Agendamento agendamento = new Agendamento();
@@ -27,19 +26,16 @@ public class AgendamentoController {
         return service.novoAgendamento(agendamento);
     }
 
-    //GET para listar todos os agendamentos disponiveis na tabela
     @GetMapping
     public List<Agendamento> listarAgendamentos(){
         return service.listarAgendamentos();
     }
 
-    //GET para procurar um agendamento em filtrado pelo ID
     @GetMapping("/{id}")
     public Agendamento buscarPeloId(@PathVariable Long id){
         return service.buscarPeloId(id);
     }
 
-    //DELETE para excluir algum agendamento filtrado pelo ID
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Long id){

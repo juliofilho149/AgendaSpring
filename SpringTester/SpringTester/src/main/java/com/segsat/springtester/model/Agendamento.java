@@ -4,18 +4,14 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-//Criação da minha entidade tabala que será responsável pelo bando de dados
 @Entity
 @Table(name = "agendamentos")
 public class Agendamento {
-    /*Defini um ID do tipo Long para minha coluna,
-    e inserir o strategy do tipo GenerationType.IDENTITY para que essa coluna seja AUTOINCREMENT,
-    ou seja, não preciso inserir nada aqui, pois sempre será o ID atual + 1 para cada nova row*/
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //Criação de colunas comuns e inserindo o nullable = false para não permitir linhas vazias.
     @Column(nullable = false)
     private String cliente;
 
@@ -25,18 +21,14 @@ public class Agendamento {
     @Column(nullable = false)
     private LocalDateTime dataHora;
 
-    //Construtor padrão vazio
     public Agendamento(){
     }
 
-    //Construtor da tabela com parâmetro, novamente não inserindo a coluna ID.
     public Agendamento(String cliente, String servico, LocalDateTime datahora){
         this.cliente = cliente;
         this.servico = servico;
         this.dataHora = dataHora;
     }
-
-    //GETERS e SETERS.
     public Long getId() {
         return id;
     }

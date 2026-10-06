@@ -2,16 +2,12 @@ package com.segsat.springtester.dto;
 
 import java.time.LocalDateTime;
 
-/*Criei essa classe para me ajudar no POST do controller, pois o POST padrão estava exibindo o JSON com a coluna ID,
-* dando erro na hora de inserir o JSON no banco de dados, pois o ID é autoincrement, sendo desnecessário
-* fornecer um número para o ID.*/
 public class AgendamentoRequest {
-    //Atributos da minha classe, todos sendo privados para manipulação através dos geters e seters
+
     private String cliente;
     private String servico;
     private LocalDateTime dataHora;
 
-    //Geters e seters
     public String getCliente() {
         return cliente;
     }

@@ -6,37 +6,26 @@ import com.segsat.springtester.repository.AgendamentoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-//Serviços do Programa para manipular a tabela do banco de dados.
+
 @Service
 public class AgendamentoService {
-    /*Criação da variável do tipo AgendamentoRepository que herdou metodos do JpaRepository,
-    * JpaRepository já contem metodos prontos para manipular uma tabela, metodos para inserir dados,
-    * exluir dados, realizar buscas e etc.*/
     private final AgendamentoRepository repository;
 
-    //Construtor para iniciar a variável repository
     public AgendamentoService(AgendamentoRepository repository){
         this.repository = repository;
     }
-    //Metodo para inserir um novo agendamento, herdando o .save() do JpaRepository
     public Agendamento novoAgendamento(Agendamento agendamento){
         return repository.save(agendamento);
     }
-    //Metodo para listar todos os agendamentos, herdando o .finAll() do JpaRepository
     public List<Agendamento> listarAgendamentos(){
         return repository.findAll();
     }
-    //Metodo para buscar um agendamento pelo Id, herdando o .findById() do JpaRepository
     public Agendamento buscarPeloId(long id){
         return repository.findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Agendamento não encontrado"));
     }
-    //Metodo para deletar um agendamento da tabela filtrando pelo id, herdando o deleteById do JpaRepository
     public void deletar (Long id){
-        /*Inseri um try e catch para garantir a segurança da execução do programa,
-        * porém o proprio metodo já vem um try e catch que retorna uma mensagem de erro, mas preferi
-        * inserir no programa apenas pela garantia.*/
         try {
             repository.deleteById(id);
         }

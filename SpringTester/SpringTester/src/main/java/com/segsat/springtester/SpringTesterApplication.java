@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class SpringTesterApplication {
- //Classe com metodo main para iniciar o programa
+
     public static void main(String[] args) {
         SpringApplication.run(SpringTesterApplication.class, args);
     }

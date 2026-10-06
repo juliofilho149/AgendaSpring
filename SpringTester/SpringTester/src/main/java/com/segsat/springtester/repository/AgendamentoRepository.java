@@ -2,7 +2,7 @@ package com.segsat.springtester.repository;
 
 import com.segsat.springtester.model.Agendamento;
 import org.springframework.data.jpa.repository.JpaRepository;
-//Criação de um repositório para herdar todos os metodos do JpaRepository que irá manipular o ID da classe Agendamento.
+
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
     
 
