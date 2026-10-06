@@ -1,5 +1,6 @@
 package com.segsat.springtester.controller;
 
+import com.segsat.springtester.dto.AgendamentoRequest;
 import com.segsat.springtester.model.Agendamento;
 import com.segsat.springtester.service.AgendamentoService;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,11 @@ public class AgendamentoController {
     }
 
     @PostMapping
-    public Agendamento novoAgendamento(@RequestBody Agendamento agendamento){
+    public Agendamento novoAgendamento(@RequestBody AgendamentoRequest request){
+        Agendamento agendamento = new Agendamento();
+        agendamento.setCliente(request.getCliente());
+        agendamento.setServico(request.getServico());
+        agendamento.setDataHora(request.getDataHora());
         return service.novoAgendamento(agendamento);
     }
 
