@@ -26,8 +26,11 @@ public class AgendamentoService {
                         new RuntimeException("Agendamento não encontrado"));
     }
     public void deletar (Long id){
-        if (!repository.existsById(id)){
-            throw new RuntimeException("Agendamento não encontrado");
+        try {
+            repository.deleteById(id);
+        }
+        catch(RuntimeException e){
+            System.out.println("ID não encontrado erro: " + e.getMessage()) ;
         }
     }
 
